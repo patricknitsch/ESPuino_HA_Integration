@@ -2,8 +2,8 @@ DOMAIN = "espuino"
 CONF_DEVICE_NAME = "device_name" # Neuer Name für die Konfiguration
 CONF_FRIENDLY_NAME = "friendly_name" # Anzeigename in Home Assistant
 
-DEFAULT_MQTT_BASE_TOPIC = "Espuino/Cmnd" # Basis für Command-Topics, z.B. Cmnd/<device_name>/...
-DEFAULT_MQTT_STATE_TOPIC = "Espuino/State"
+DEFAULT_MQTT_BASE_TOPIC = "Cmnd" # Basis für Command-Topics
+DEFAULT_MQTT_STATE_TOPIC = "State" # Basis für State-Topics
 # This will be the first segment for COMMAND topics: espuino/<device_name>/...
 
 
@@ -13,11 +13,11 @@ STATE_SUFFIX_RFID = "Rfid"
 STATE_SUFFIX_PLAYMODE = "Playmode"
 STATE_SUFFIX_REPEAT_MODE = "RepeatMode" 
 STATE_SUFFIX_TRACK = "Track"
-STATE_SUFFIX_BATTERY_SOC = "BatterySOC" # Annahme, basierend auf vorherigen Infos
-STATE_SUFFIX_BATTERY_VOLTAGE = "BatteryVoltage" # Annahme
+STATE_SUFFIX_BATTERY_SOC = "Battery" # Annahme, basierend auf vorherigen Infos
+STATE_SUFFIX_BATTERY_VOLTAGE = "Voltage" # Annahme
 STATE_SUFFIX_SREVISION = "SoftwareRevision" # Annahme
 STATE_SUFFIX_SLEEP_TIMER = "SleepTimer" # Annahme
-STATE_SUFFIX_CURRENT_IP = "IP"
+STATE_SUFFIX_CURRENT_IP = "IPv4"
 STATE_SUFFIX_ONLINE_STATE = "State" # Annahme für topicState (Online/Offline)
 STATE_SUFFIX_SLEEP_STATE = "Sleep" # Annahme für topicSleepState (ON/OFF)
 STATE_SUFFIX_LOCK_CONTROLS = "LockControls" # Annahme
