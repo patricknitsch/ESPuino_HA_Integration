@@ -62,12 +62,12 @@ class EspuinoMqttEntity(Entity):
     def _get_full_state_topic(self, state_topic_suffix_const: str) -> str:
         """Construct the full MQTT state topic using the configured device name."""
         # state_topic_suffix_const is one of the STATE_SUFFIX_... from const.py
-        return f"State/{self._device_name}/{state_topic_suffix_const}"
+        return f"{DEFAULT_MQTT_STATE_TOPIC}/{state_topic_suffix_const}"
 
     def _get_full_command_topic(self, command_topic_suffix_const: str) -> str:
         """Construct the full MQTT command topic using the fixed base 'espuino' and configured device name."""
         # command_topic_suffix_const is one of the TOPIC_..._CMND from const.py
-        return f"{DEFAULT_MQTT_BASE_TOPIC}/{self._device_name}/{command_topic_suffix_const}"
+        return f"{DEFAULT_MQTT_BASE_TOPIC}/{command_topic_suffix_const}"
 
     async def async_subscribe_to_topic(self, topic_suffix: str, msg_callback=None):
         """Subscribe to a specific MQTT state topic suffix (from STATE_SUFFIX_... constants)."""
@@ -142,3 +142,4 @@ class EspuinoMqttEntity(Entity):
         await mqtt_async_publish(
             self.hass, full_topic, payload, qos, retain
         )
+
