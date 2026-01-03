@@ -2,7 +2,8 @@ DOMAIN = "espuino"
 CONF_DEVICE_NAME = "device_name" # Neuer Name für die Konfiguration
 CONF_FRIENDLY_NAME = "friendly_name" # Anzeigename in Home Assistant
 
-DEFAULT_MQTT_BASE_TOPIC = "Cmnd" # Basis für Command-Topics, z.B. Cmnd/<device_name>/...
+DEFAULT_MQTT_BASE_TOPIC = "Espuino/Cmnd" # Basis für Command-Topics, z.B. Cmnd/<device_name>/...
+DEFAULT_MQTT_STATE_TOPIC = "Espuino/State"
 # This will be the first segment for COMMAND topics: espuino/<device_name>/...
 
 
