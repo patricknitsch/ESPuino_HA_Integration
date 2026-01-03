@@ -189,6 +189,7 @@ class EspuinoMediaPlayer(EspuinoMqttEntity, MediaPlayerEntity):
             # Wenn in diesem Callback Änderungen vorgenommen wurden (und _update_state_and_cover nicht aufgerufen wurde),
             # dann den Home Assistant Status aktualisieren.
             if local_changes_made:
+                self._attr_state = HA_STATE_PLAYING
                 self.async_write_ha_state()
 
         @callback
@@ -274,22 +275,26 @@ class EspuinoMediaPlayer(EspuinoMqttEntity, MediaPlayerEntity):
     async def async_media_pause(self) -> None:
         """Send pause command."""
         await self.async_publish_mqtt(self._topic_track_control_cmnd, "3") # 3 = Play/Pause
-        # self._attr_state = HA_STATE_PAUSED
-        # self.async_write_ha_state()
+        self._attr_state = HA_STATE_PAUSED
+        self.async_write_ha_state()
 
     async def async_media_stop(self) -> None:
         """Send stop command."""
         await self.async_publish_mqtt(self._topic_track_control_cmnd, "1") # 1 = Stop
-        # self._attr_state = HA_STATE_IDLE
-        # self.async_write_ha_state()
+        self._attr_state = HA_STATE_IDLE
+        self.async_write_ha_state()
 
     async def async_media_next_track(self) -> None:
         """Send next track command."""
         await self.async_publish_mqtt(self._topic_track_control_cmnd, "4") # 4 = Next
+        self._attr_state = HA_STATE_PLAYING
+        self.async_write_ha_state()
 
     async def async_media_previous_track(self) -> None:
         """Send previous track command."""
         await self.async_publish_mqtt(self._topic_track_control_cmnd, "5") # 5 = Previous
+        self._attr_state = HA_STATE_PLAYING
+        self.async_write_ha_state()
 
     async def async_turn_off(self) -> None:
         """Schaltet den Player aus (sendet MQTT-Befehl)."""
@@ -300,3 +305,4 @@ class EspuinoMediaPlayer(EspuinoMqttEntity, MediaPlayerEntity):
 
     # Weitere Methoden wie async_mute_volume, async_select_source etc.
     # müssten implementiert werden, wenn _attr_supported_features dies anzeigt.
+
