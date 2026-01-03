@@ -46,14 +46,14 @@ This custom integration lets you control ESPuino via MQTT and monitor its status
 ### Via HACS (recommended)
 
 1. Open HACS → **Integrations** → Three-dot menu → **Custom repositories**
-2. Add the repository: `https://github.com/DexXxter007/ESPuino_HA_Integration`
+2. Add the repository: `https://github.com/patricknitsch/ESPuino_HA_Integration`
 3. Category: `Integration`
 4. After adding, search for `ESPuino Integration` in HACS and install it
 5. Restart Home Assistant
 
 ### Manual Installation
 
-1. Download the [ZIP archive](https://github.com/DexXxter007/ESPuino_HA_Integration/archive/refs/heads/main.zip)
+1. Download the [ZIP archive](https://github.com/patricknitsch/ESPuino_HA_Integration/archive/refs/heads/main.zip)
 2. Extract it into:  
    `<config>/custom_components/espuino/`
 3. Restart Home Assistant
@@ -83,8 +83,8 @@ Below is an example snippet that shows how to define MQTT topics:
   constexpr uint16_t mqttRetryInterval = 60;
   constexpr uint8_t mqttMaxRetriesPerInterval = 1;
   #define DEVICE_HOSTNAME "ESP32-ESPuino" // Default MQTT ID
-  constexpr const char topicSleepCmnd[] = "Cmnd/ESPuino/Sleep";
-  constexpr const char topicSleepState[] = "State/ESPuino/Sleep";
+  constexpr const char topicSleepCmnd[] = "ESPuino/Cmnd/Sleep";
+  constexpr const char topicSleepState[] = "ESPuino/State/Sleep";
 ```
 ## ⚠️ Important for multi-device setups
 
@@ -98,8 +98,8 @@ For example:
   constexpr uint16_t mqttRetryInterval = 60;
   constexpr uint8_t mqttMaxRetriesPerInterval = 1;
   #define DEVICE_HOSTNAME "ESP32-ESPuino_Paul" // Change Name
-  constexpr const char topicSleepCmnd[] = "Cmnd/ESPuino_Paul/Sleep";
-  constexpr const char topicSleepState[] = "State/ESPuino/Sleep";
+  constexpr const char topicSleepCmnd[] = "ESPuino_Paul/Cmnd/Sleep";
+  constexpr const char topicSleepState[] = "ESPuino/State/Sleep";
 ```
 
 <img src="image/2.png" alt="add Name" width="300"/>
